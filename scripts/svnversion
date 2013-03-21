@@ -1,0 +1,11 @@
+#!/bin/sh
+# Check svnversion of kernel,use "git tag" command.
+
+if rev=`git tag 2>/dev/null` ;then
+	logs=`git log 2>/dev/null|grep "Date:   "|wc -l`
+	printf -- '%04d' "$logs"
+else
+   rev="0000"
+	printf -- '%s' "$rev"
+fi
+
